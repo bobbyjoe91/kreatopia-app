@@ -1,0 +1,20 @@
+[
+  {
+    "title": "The Beautiful Spring",
+    "creator_id": "@kevpow",
+    "creator_name": "Kevin Powell",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliq...",
+    "donation": 10000,
+    "created_at": "Sat, 14 Aug 2021",
+    "img_link": "https://res.cloudinary.com/lelestaticassets/image/upload/v1627955035/Dicoding%20Final%20Project/4459586_lujgnw.jpg"
+  },
+  {
+    "title": "Tour to a Tropical Island",
+    "creator_id": "@kevpow",
+    "creator_name": "Kevin Powell",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliq...",
+    "donation": 10000,
+    "created_at": "Sat, 14 Aug 2021",
+    "img_link": "https://res.cloudinary.com/lelestaticassets/image/upload/v1625819434/samples/landscapes/beach-boat.jpg"
+  }
+]
