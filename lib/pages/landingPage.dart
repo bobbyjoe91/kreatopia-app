@@ -43,7 +43,8 @@ class _LandingPage extends State<LandingPage> {
         itemBuilder: (BuildContext context, int index) {
           return Container(
             margin: EdgeInsets.only(
-              top: (index == 0) ? 30 : 0
+              top: (index == 0) ? 30 : 0,
+              bottom: (index == _artworkDataList.length-1) ? 30 : 0
             ),
             child: Artwork(
               artworkData: _artworkDataList[index]
