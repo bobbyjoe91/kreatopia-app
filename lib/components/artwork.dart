@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+// pages
+import '../pages/artworkDetail.dart';
+
 class Artwork extends StatelessWidget {
   final artworkData;
 
@@ -35,73 +38,77 @@ class Artwork extends StatelessWidget {
           )
         ),
         child: InkWell(
-          onTap: () => print('Tapped...'),
-          child: 
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Container(
-                  height: 156,
-                  child: ClipRRect(
-                    child: Image.network(
-                      artworkData['img_link'],
-                      fit: BoxFit.fitWidth
-                    ),
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(10),
-                      topRight: Radius.circular(10)
-                    )
+          onTap: () {
+            Navigator.push(
+              context, 
+              MaterialPageRoute(builder: (context) => ArtworkDetail(artworkDatum: this.artworkData))
+            );
+          },
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                height: 156,
+                child: ClipRRect(
+                  child: Image.network(
+                    artworkData['img_link'],
+                    fit: BoxFit.fitWidth
                   ),
-                ),
-                Container( // text container
-                  padding: EdgeInsets.symmetric(horizontal: 12, vertical: 7),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        artworkData['title'],
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w700
-                        )
-                      ),
-                      Container(
-                        margin: EdgeInsets.only(bottom: 7),
-                        padding: EdgeInsets.only(top: 2),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'by ${artworkData['creator_id']}',
-                              style: TextStyle(
-                                color: Color(0xFFC4C4C4)
-                              )
-                            ),
-                            Text(
-                              artworkData['created_at'],
-                              style: TextStyle(
-                                color: Color(0xFFC4C4C4)
-                              )
-                            ),
-                          ]
-                        )
-                      ),
-                      Text(
-                        artworkData['description'],
-                        textAlign: TextAlign.justify,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(
-                          fontFamily: 'Open Sans',
-                          fontSize: 12
-                        )
-                      )
-                    ],
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                    topRight: Radius.circular(10)
                   )
+                ),
+              ),
+              Container( // text container
+                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 7),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      artworkData['title'],
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w700
+                      )
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(bottom: 7),
+                      padding: EdgeInsets.only(top: 2),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'by ${artworkData['creator_id']}',
+                            style: TextStyle(
+                              color: Color(0xFFC4C4C4)
+                            )
+                          ),
+                          Text(
+                            artworkData['created_at'],
+                            style: TextStyle(
+                              color: Color(0xFFC4C4C4)
+                            )
+                          ),
+                        ]
+                      )
+                    ),
+                    Text(
+                      artworkData['description'],
+                      textAlign: TextAlign.justify,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontFamily: 'Open Sans',
+                        fontSize: 12
+                      )
+                    )
+                  ],
                 )
-              ],
-            )
+              )
+            ],
+          )
       )
     ));
   }
