@@ -8,11 +8,21 @@ class Artwork extends StatelessWidget {
 
   Artwork({ required this.artworkData });
 
+  marginHorizontal(BuildContext ctx) {
+    double width = MediaQuery.of(ctx).size.width;
+    if(width > 1000) return 300.0;
+    else if(width > 900) return 200.0;
+    else if(width > 500) return 100.0;
+    else return 18.0;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 256,
-      margin: EdgeInsets.symmetric(horizontal: 18),
+      margin: EdgeInsets.symmetric(
+        horizontal: this.marginHorizontal(context)
+      ),
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(

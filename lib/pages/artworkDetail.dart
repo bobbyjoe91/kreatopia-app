@@ -84,8 +84,12 @@ class _ArtworkDetail extends State<ArtworkDetail> {
             Story(datum: artworkDatum),
             Positioned(
               bottom: 0,
-              width: MediaQuery.of(context).size.width,
-              // left: 0,
+              width: (MediaQuery.of(context).size.width > 600) 
+                    ? 600 
+                    : MediaQuery.of(context).size.width,
+              left: (MediaQuery.of(context).size.width > 600) 
+                    ? MediaQuery.of(context).size.width/2 - 300
+                    : 0,
               child: Container(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                 height: 87,
@@ -103,7 +107,7 @@ class _ArtworkDetail extends State<ArtworkDetail> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
@@ -130,6 +134,7 @@ class _ArtworkDetail extends State<ArtworkDetail> {
                                 // focusNode: _donation,
                                 controller: _controller,
                                 textAlign: TextAlign.center, 
+                                textAlignVertical: TextAlignVertical.center,
                                 decoration: InputDecoration(counterText: ''),
                                 maxLength: 12
                               )
