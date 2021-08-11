@@ -58,7 +58,12 @@ class _ArtworkDetail extends State<ArtworkDetail> {
       } else {
         Navigator.push(
           context, 
-          MaterialPageRoute(builder: (context) => ThankYou())
+          MaterialPageRoute(
+            builder: (context) => ThankYou(
+              title: artworkDatum['title'], 
+              authorId: artworkDatum['creator_id'], 
+              donationValue: donationValue
+            ))
         );
       }
     }
