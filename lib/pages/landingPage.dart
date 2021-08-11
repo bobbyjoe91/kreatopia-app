@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'dart:convert';
 
 // components
-import '../components/artwork.dart';
+import 'package:kreatopia/components/artwork.dart';
 
 class LandingPage extends StatefulWidget {
   @override

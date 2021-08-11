@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // pages
-import '../pages/artworkDetail.dart';
+import 'package:kreatopia/pages/artworkDetail.dart';
 
 class Artwork extends StatelessWidget {
   final artworkData;
