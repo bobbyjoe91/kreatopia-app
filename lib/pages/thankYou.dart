@@ -31,7 +31,8 @@ class ThankYou extends StatelessWidget {
                   fontFamily: 'Roboto',
                   fontWeight: FontWeight.w700,
                   fontSize: 20
-                )
+                ),
+                textAlign: TextAlign.center,
               ),
               Container(
                 margin: EdgeInsets.symmetric(vertical: 20),
