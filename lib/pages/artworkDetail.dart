@@ -1,11 +1,68 @@
 import 'package:flutter/material.dart';
 
-import '../components/story.dart';
+// pages
+import 'package:kreatopia/pages/thankYou.dart';
 
-class ArtworkDetail extends StatelessWidget {
+// components
+// import 'package:kreatopia/components/artwork.dart';
+import 'package:kreatopia/components/story.dart';
+
+class ArtworkDetail extends StatefulWidget {
   final artworkDatum;
 
   ArtworkDetail({ required this.artworkDatum });
+
+  _ArtworkDetail createState() => _ArtworkDetail(artworkDatum: this.artworkDatum);
+}
+
+class _ArtworkDetail extends State<ArtworkDetail> {
+  final artworkDatum;
+  TextEditingController _controller = TextEditingController();
+
+  _ArtworkDetail({ required this.artworkDatum });
+
+  _donationChecker() {
+    String valueString = _controller.text;
+    if(valueString == '') {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            content: Text('Please insert donation'),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('OK')
+              )
+            ]
+          );
+        }
+      );
+    } else {
+      int donationValue = int.parse(valueString);
+      if(donationValue < 10000) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              content: Text('Please donate at least Rp10.000'),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(context),
+                  child: Text('OK')
+                )
+              ]
+            );
+          }
+        );
+      } else {
+        Navigator.push(
+          context, 
+          MaterialPageRoute(builder: (context) => ThankYou())
+        );
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,12 +105,21 @@ class ArtworkDetail extends StatelessWidget {
                           fontWeight: FontWeight.w700
                         )
                       ),
-                      Text(
-                        "Rp _________",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Open Sans',
-                        )
+                      Row(
+                        children: [
+                          Text(
+                            'Rp ',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontFamily: 'Open Sans'
+                            )
+                          ),
+                          Container(
+                            width: 131, 
+                            height: 24,
+                            child: TextField(controller: _controller)
+                          )
+                        ],
                       )
                     ],
                   ),
@@ -61,7 +127,7 @@ class ArtworkDetail extends StatelessWidget {
                     height: 39,
                     width: 109,
                     child: ElevatedButton(
-                      onPressed: () => print('Donated'), 
+                      onPressed: _donationChecker, 
                       child: Text(
                         'Donate',
                         style: TextStyle(
@@ -86,5 +152,11 @@ class ArtworkDetail extends StatelessWidget {
         ]
       )
     );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
   }
 }
