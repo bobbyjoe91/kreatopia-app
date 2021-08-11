@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class Story extends StatelessWidget {
   final datum;
@@ -10,8 +11,9 @@ class Story extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          Image.network(
-            datum['img_link'],
+          FadeInImage.memoryNetwork(
+            image: datum['img_link'],
+            placeholder: kTransparentImage,
             fit: BoxFit.fitWidth
           ),
           Container(
