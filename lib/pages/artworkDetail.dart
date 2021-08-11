@@ -17,12 +17,12 @@ class ArtworkDetail extends StatefulWidget {
 
 class _ArtworkDetail extends State<ArtworkDetail> {
   final artworkDatum;
+  String valueString = '';
   TextEditingController _controller = TextEditingController();
 
   _ArtworkDetail({ required this.artworkDatum });
 
   _donationChecker() {
-    String valueString = _controller.text;
     if(valueString == '') {
       showDialog(
         context: context,
@@ -142,7 +142,10 @@ class _ArtworkDetail extends State<ArtworkDetail> {
                       height: 39,
                       width: 109,
                       child: ElevatedButton(
-                        onPressed: _donationChecker, 
+                        onPressed: () {
+                          setState(() => valueString = _controller.text);
+                          _donationChecker();
+                        }, 
                         child: Text(
                           'Donate',
                           style: TextStyle(
