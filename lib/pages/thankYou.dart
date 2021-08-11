@@ -8,6 +8,7 @@ class ThankYou extends StatelessWidget {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text('Thank you')
           ],
