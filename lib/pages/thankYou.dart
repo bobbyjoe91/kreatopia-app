@@ -131,6 +131,7 @@ class ThankYou extends StatelessWidget {
                   margin: EdgeInsets.only(bottom: 20),
                   child: Text(
                     'for donating to ${this.authorId} for Rp${this.donationValue}',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
                       fontFamily: 'Roboto',
                       fontSize: 20
