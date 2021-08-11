@@ -70,86 +70,97 @@ class _ArtworkDetail extends State<ArtworkDetail> {
       appBar: AppBar(
         title: Text("Kreatopia")
       ),
-      body: Stack(
-        children: [
-          Story(datum: artworkDatum),
-          Positioned(
-            bottom: 0,
-            width: MediaQuery.of(context).size.width,
-            // left: 0,
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
-              height: 87,
-              decoration: BoxDecoration(
-                color: Color(0xFFFFE99A),
-                border: Border.all(
-                  color: Color(0xFFFCD13A),
-                  width: 3
-                ),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(10)
-                )
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Support the creator!",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w700
-                        )
-                      ),
-                      Row(
-                        children: [
-                          Text(
-                            'Rp ',
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontFamily: 'Open Sans'
-                            )
-                          ),
-                          Container(
-                            width: 131, 
-                            height: 24,
-                            child: TextField(controller: _controller)
-                          )
-                        ],
-                      )
-                    ],
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: Stack(
+          children: [
+            Story(datum: artworkDatum),
+            Positioned(
+              bottom: 0,
+              width: MediaQuery.of(context).size.width,
+              // left: 0,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+                height: 87,
+                decoration: BoxDecoration(
+                  color: Color(0xFFFFE99A),
+                  border: Border.all(
+                    color: Color(0xFFFCD13A),
+                    width: 3
                   ),
-                  SizedBox(
-                    height: 39,
-                    width: 109,
-                    child: ElevatedButton(
-                      onPressed: _donationChecker, 
-                      child: Text(
-                        'Donate',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w700
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10)
+                  )
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Support the creator!",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: 'Roboto',
+                            fontWeight: FontWeight.w700
+                          )
+                        ),
+                        Row(
+                          children: [
+                            Text(
+                              'Rp ',
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontFamily: 'Open Sans'
+                              )
+                            ),
+                            Container(
+                              width: 131, 
+                              height: 24,
+                              child: TextField(
+                                // focusNode: _donation,
+                                controller: _controller,
+                                textAlign: TextAlign.center, 
+                                decoration: InputDecoration(counterText: ''),
+                                maxLength: 12
+                              )
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                    SizedBox(
+                      height: 39,
+                      width: 109,
+                      child: ElevatedButton(
+                        onPressed: _donationChecker, 
+                        child: Text(
+                          'Donate',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontFamily: 'Roboto',
+                            fontWeight: FontWeight.w700
+                          )
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.white,
+                          side: BorderSide(width: 3, color: Color(0xFFFCD13A)),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5)
+                          )
                         )
                       ),
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
-                        side: BorderSide(width: 3, color: Color(0xFFFCD13A)),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(5)
-                        )
-                      )
-                    ),
-                  )
-                ]
+                    )
+                  ]
+                )
               )
             )
-          )
-        ]
+          ]
+        )
       )
     );
   }
